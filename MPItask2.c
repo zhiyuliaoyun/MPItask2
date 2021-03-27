@@ -33,9 +33,9 @@ main(int argc, char** argv) {
 			int process_rank = status.MPI_SOURCE;
 			MPI_Recv(&part_trap, 1, MPI_FLOAT, process_rank, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 			total += part_trap;
-			if (k < 1023) {
-				k = k + 1;
+			if (k < 1024) {
 				MPI_Send(&k, 1, MPI_FLOAT, process_rank, 20, MPI_COMM_WORLD);
+				k = k + 1;
 			}
 			else {
 				float close = 1.0;
